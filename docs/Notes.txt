@@ -330,7 +330,15 @@ John Smith		-> [CUSTOMER 2]
 
 Day 04:
 =======
+Some documents are missing.
+Documents are missing certain information.
+Mistake in metadata tagging
+	- "material" - "Green", "light weight" and not "cotton", "wool".
+	- "doctype": LeavePolicy is mistakenly tagged as "HRPolicy"
 
-
-
+Chunking strategy
+Embedding model's capabilities
+Retrieval logic
+top-k value
+Ambiguous queries
 
