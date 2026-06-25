@@ -1,0 +1,336 @@
+Day 01:
+=======
+System Message: Default behavior of the LLM (AI model)
+	You are an expert Python programmer and trainer.
+	You are an SME in Marketing Strategies
+User Message: Queries submitted by end-users.
+	Summarize this document.
+	What is the schedule of the latest FIFA world cup?
+AI/Assistant Message: The response from the LLM (model)
+
+User Message: 
+You are an expert stock analyst.
+Attached is a PDF of XYZ company.
+Can you tell me if this is a good option to invest in for the short term?
+Give your answer in 10 bullet points.
+
+You are a Personal Assistant.
+Answer queries or instructions from users.
+
+LLM: Large Language Model:
+--------------------------
+Large: Size of the data used to train the model is quite large + the internal parameters.
+	- Data is collected from all over the internet from the public domain.
+	- Text, images, videos, files (pdf, txt, csv, excel, docx etc.)
+	- ALSO, sometimes purchase data from wherever.
+	
+Language: NLP: Spoken language -> 
+	- LLMs can understand spoken (natural) language
+	- Can machines/systems really understand English or any language?
+	- They can only understand numbers!
+
+Tokenization:	
+Sentences are borken down into words.
+Words are converted into "tokens" - numerical representation of words.
+not just words, punctuations, special characters: + - ( > * & ~! @ , . ?
+
+Every LLM has it's own vocabulary of these "tokens" for any language that it supports.
+vocabulary === dictionary
+
+1 word != 1 token
+1 word could be broken down into >1 token.
+Capitalization: 77382, 2860
+Digitization:	46997, 2860
+
+Probability:
+LLM generates a list of relevant "most probable" next words:
+fence
+wall
+moon
+toy
+baby
+dog
+sofa
+table
+chair
+
+Query: Write a creative poem on Introduction to Generative AI
+LLM Input: Write a creative poem on Introduction to Generative AI
+LLM generates a list of most probable words and picks one:
+
+Write a creative poem on Introduction to Generative AI
+Generative
+
+I: 
+Write a creative poem on Introduction to Generative AI
+Generative
+O:
+Write a creative poem on Introduction to Generative AI
+Generative AI
+
+I:
+Write a creative poem on Introduction to Generative AI
+Generative AI
+O:
+Write a creative poem on Introduction to Generative AI
+Generative AI:
+
+
+Tokens:
+Bank: Same word has a different meaning in a different context.
+Financial Bank			6922
+Blood Bank				6922
+The bank of a river		6922
+
+Tokenization:	Breaking down sentences into words: I like AI Capitalization -> ["I", "like", "AI", "Capital", "ization"]
+Vectorization:	Map the tokens to individual unique IDs/numbers ["I", "like", "AI"] -> [102, 96, 43]
+Embeddings:		Convert IDs into "deep vectors", to Add meaning and context. 
+	- ["I", "like", "AI"] -> [[0.12,0.5], [0.88,0.10], [0.41, 0.67]]
+	- GPS co-ordinates
+	
+dog
+cat
+puppy
+kitten
+man
+woman
+king
+queen
+
+
+LLMs: very complex Neural Networks
+Trained to understnd the significance of each word with every other word in a given context.
+
+Context Window:
+System prompt
+User prompt
+Documents (RAG)
+Additional context (info, examples, etc.)
+Output
+
+Context Window size: 8000 tokens
+System prompt:   200 tokens
+User prompt:	 100 tokens
+--------------------------
+				 300 tokens
+8000 - 300 = 7700 tokens -> available for the model to reply.
+
+System prompt:   200 tokens
+User prompt:	 100 tokens
+Document:		3000 tokens
+--------------------------
+				3300 tokens
+8000 - 3300 = 4700 tokens -> available for the model to reply.
+
+System prompt:   200 tokens
+User prompt:	 100 tokens
+Document:		3000 tokens
+Additional info:1000 tokens
+--------------------------
+				4300 tokens
+8000 - 3300 = 3700 tokens -> available for the model to reply.
+
+If the AI response is > than the available # of tokens for the output, the response will be truncated.
+
+Temperature: between 0 and 1.
+The more it is towards 0, the more deterministic will be the response of the LLM.
+The more it is towards 1, the more creative and varying will be the response of the LLM.
+
+For the same question, you expect the same answer (more or less), the temperature value must be closer to 0.
+For variety (creativity, randomness, etc.), the temperature value must be closer to 1.
+
+top-p: between 0 and 1.
+top-p: 0.95	(95%)
+prompt: the cat jumped over the
+most-probable next words:
+fence		0.30
+wall		0.25
+river		0.07
+building	0.06
+moon		0.20
+toy			0.15
+baby		0.10
+dog			0.08
+sofa		0.05
+table		0.05
+chair		0.20
+
+1: rearrange the list in desc order
+fence		0.30
+wall		0.25
+moon		0.20
+chair		0.20
+toy			0.15
+baby		0.10
+dog			0.08
+river		0.07
+building	0.06
+sofa		0.05
+table		0.05
+
+2: filter only those that form a cumulative 95%
+fence		0.30
+wall		0.25
+moon		0.20
+chair		0.20
+
+3. it will pick one randomly.
+
+top-k: size of the list of most-probable words:
+ -> 11 words
+fence		0.30
+wall		0.25
+river		0.07
+building	0.06
+moon		0.20
+toy			0.15
+baby		0.10
+dog			0.08
+sofa		0.05
+table		0.05
+chair		0.20
+
+top-k = 5
+fence		
+wall		
+river		
+building	
+moon		
+
+temperature
+top-p
+top-k
+
+Capitalization: Capital ization
+Generalization: General ization
+
+Generative: Gener ative
+Alternative: Altern ative
+
+
+Documents: created Embeddings
+user query: that has to search these documents for a relevant response.
+embed the query also.
+
+CTRL+SHIFT+P
+
+DAY 02:
+=======
+RAG vs Fine-tuning (re-training a model):
+---
+RAG: documents
+
+
+Data/datasets: Excel, csv, tables (DBs), APIs....docs also.
+GPT, Claude, Gemini --- LLMs/models --- trained on generic data collected from the internet.
+	- they can answer or perform any task
+	- generate text, summary, image, email, analyze, ....
+	
+Specific LLM for our purpose only.
+Legal, Medical, Financial....
+- They need domain/business specific LLMs
+- Need a lot of data to begin with
+- Create their own LLMs
+	- a lot of resources -> servers, people (with the right expertise), time, money
+- Building from scratch is difficult
+- Take an existing model, and re-train/fine-tune it on their data.
+- Configure the model on their servers (on-prem, cloud) - within their network
+	- the data does not go outside the enterprise
+- Data cleansing
+	- Preparing the data
+	- Determine which data points/columns/features to use
+	- manage missing/invalid
+- Split the data into train, test and validate
+- the actual implementation of the NN.
+- will never work in the first try
+	- retry again and again with different parameter settings etc. till you come with a "comfortble" acceptance that the LLM is working as expected on YOUR DATA!!!!
+	
+Fine-tuning: define behavior of the model
+	- What role to play
+	- what output in what format to return back
+	- any constraints
+	
+Steps for HOLs:
+1. clone the daily repo.
+2. Create python virtual env	-> python -m venv .venv
+3. Actiavte the virtual env		-> .venv\Scripts\Activate.ps   (source .venv/bin/activate)
+4. Create the .env files		-> Create in the root folder
+5. Add the OPENAI_API_KEY to the .env file (save)
+6. Run pip installs
+7. Work on TODOs
+8. Run the program
+
+Day 03:
+=======
+LLM internal basics:
+- Tokenization
+- Vectorization
+- Embeddings
+	- vector (multi-dimensional) space
+- Context
+- Context window
+- sampling and inference
+	- temperature
+	- top-p
+	- top-k
+	- probability
+		- how does the next word get generated
+- impact of tokens on cost
+- importance of giving relevant and proper prompts
+	- System Message (role)
+	- User Message (query)
+	- AI/Assistant Message (response from the AI tool/LLM/model)
+- demos
+RAG:
+- What is RAG?
+- Importance of RAG to enterprise
+	- avoid hallucination
+	- give grounded answers
+- RAG vs Fine-tuning
+- RAG Pipeline
+	- Ingest
+	- Chunking
+	- Embeddings
+	- Retrieve - the most relevant chunks for a given query
+		- embed the query
+	- Answer generation - by send the retrieved chunks to the LLM
+- Demo
+
+
+RAG System Prompt:
+---
+You a HR assistant for Walmart Employees.
+
+Answer ONLY from the provided context.
+If not found, look for information at these locations:
+https://www.walmart.com
+https://www.walmart-policies.com
+https://www.glassdoor.com
+
+If still not found, say "I don't know".
+
+Generate the answer and provide details about the source from where you got the data.
+If it is from the provided context, then mention the filename, page number, section (if applicable).
+
+Context:
+{context}
+
+Query:
+{Query}
+
+ChromaDB -> score is usually between 0 and 1.
+FAISS -> distance - lower the value, the more relevant it is
+
+1234567890   -> **********  -> Masking
+1234567890   -> REMOVE
+1234567890   -> [PHONE NUMBER] -> Place holder
+
+Ajay Singala 	-> [CUSTOMER 1]
+John Smith		-> [CUSTOMER 2]
+
+Day 04:
+=======
+
+
+
+
