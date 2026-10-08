@@ -207,6 +207,7 @@ E.g.:
 HOL\ajs_walmart_apr2026_hol_day01
 HOL\ajs_walmart_apr2026_hol_day02
 HOL\ajs_walmart_apr2026_hol_day03
+HOL\ajs_walmart_apr2026_hol_day03
 
 1. Clone this repo
 2. Open the folder in VSC
